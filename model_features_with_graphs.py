@@ -12,6 +12,22 @@ checkins = pd.read_json('yelp_checkin.json',lines=True)
 tips = pd.read_json('yelp_tip.json',lines=True)
 photos = pd.read_json('yelp_photo.json',lines=True)
 
+# merging data from several files into single df on buisness_id
+df = pd.merge(businesses, reviews, how='left', on='business_id')
+df = pd.merge(df, users, how='left', on='business_id')
+df = pd.merge(df, checkins, how='left', on='business_id')
+df = pd.merge(df, tips, how='left', on='business_id')
+df = pd.merge(df, photos, how='left', on='business_id')
+
+#filling missing values with 0
+df.fillna({'weekday_checkins':0,
+           'weekend_checkins':0,
+           'average_tip_length':0,
+           'number_tips':0,
+           'average_caption_length':0,
+           'number_pics':0},
+          inplace=True)
+
 def model_features(feature_list):
     
     # define ratings and features, with the features limited to our chosen subset of data
