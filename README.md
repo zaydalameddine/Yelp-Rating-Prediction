@@ -12,3 +12,5 @@ I also:
 - Compared different coefficient values to see which variables held the most weight on the dependent variable
 - Split the data into training (80%) and testing (20%) sets
 - Evaluated the accuracy of the model by calculating the coefficient of the determinant of R2
+
+P.S. Data files are over 100mb, figuring out how to upload them, will be done shortly
